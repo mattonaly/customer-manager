@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Customer } from "../models/Customer";
 
-const API_URL = "http://localhost:3005/api";
+const API_URL = "http://localhost:3000/api";
 
 const api = axios.create({
   baseURL: API_URL,

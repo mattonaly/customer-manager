@@ -5,10 +5,15 @@ services:
       context: ./customer-manager-backend
       dockerfile: Dockerfile
     ports:
-      - "3005:3000"
+      - "3000:3000"
     environment:
       - NODE_ENV=development
       - PORT=3000
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USERNAME=customer-manager
+      - DB_PASSWORD=TrNV[J2<pj:SPmLFe?n7
+      - DB_DATABASE=database
     depends_on:
       - db
     links:
@@ -20,10 +25,9 @@ services:
       context: ./customer-manager-frontend
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - "80:80"
     environment:
       - NODE_ENV=development
-      - PORT=3000
 
   db:
     image: postgres:latest
