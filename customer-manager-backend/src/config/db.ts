@@ -1,5 +1,7 @@
-import { configDotenv } from "dotenv";
-import { DataSource } from "typeorm";
+import { configDotenv } from 'dotenv';
+import { DataSource } from 'typeorm';
+
+import { Customer } from '../entities/customer';
 
 configDotenv();
 
@@ -12,5 +14,5 @@ export const dataSource = new DataSource({
   database: process.env.DB_DATABASE,
   synchronize: true,
   logging: true,
-  entities: ["src/entities/*.ts"],
+  entities: [Customer],
 });
