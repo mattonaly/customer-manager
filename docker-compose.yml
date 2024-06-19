@@ -1,0 +1,41 @@
+services:
+  backend:
+    container_name: customer-manager-backend
+    build:
+      context: ./customer-manager-backend
+      dockerfile: Dockerfile
+    ports:
+      - "3005:3000"
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+    depends_on:
+      - db
+    links:
+      - db
+
+  frontend:
+    container_name: customer-manager-frontend
+    build:
+      context: ./customer-manager-frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+
+  db:
+    image: postgres:latest
+    container_name: postgres-db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: database
+      POSTGRES_USER: customer-manager
+      POSTGRES_PASSWORD: TrNV[J2<pj:SPmLFe?n7
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:
